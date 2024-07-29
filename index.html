@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Dashboard Embedding Example</title>
+    </head>
+
+    <body onload="embedDashboard()">
+        <span>
+            <label for="country">Country</label>
+            <select id="country" name="country">
+                <option value="United States">United States</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Canada">Canada</option>
+            </select>
+        </span>
+        <div id="experience-container"></div>
+		
+		<iframe
+			width="960"
+			height="720"
+			src="https://us-west-2.quicksight.aws.amazon.com/sn/embed/share/accounts/681989517074/dashboards/gfg-Dashboard-Id-Presentacion-BAM-Workflow?directory_alias=cobis-poc-dev">
+		</iframe>
+    </body>
+
+</html>
