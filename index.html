@@ -1,19 +1,99 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <title>Integración de QuickSight</title>
+    <script src="https://unpkg.com/amazon-quicksight-embedding-sdk@2.7.0/dist/quicksight-embedding-js-sdk.min.js"></script>
+    <script type="text/javascript">
+        const embedGenerativeQnA = async() => {    
+            const {createEmbeddingContext} = QuickSightEmbedding;
 
-	<header>
-		<img id="CobisTopazLogo" src="COBIS-TOPAZ.png" alt="Cobis Topaz" width="250">
-	</header>
+            const embeddingContext = await createEmbeddingContext({
+                onChange: (changeEvent, metadata) => {
+                    console.log('Context received a change', changeEvent, metadata);
+                },
+            });
 
+            const frameOptions = {
+                url: "https://us-west-2.quicksight.aws.amazon.com/embed/363dfafcc1224c6581460457faad72ef/dashboards/gfg-Topic-Id-Indicadores-Acumulados-Flujos?code=AYABeFrRSqkwGm9yJqKmDzPVPOQAAAABAAdhd3Mta21zAEthcm46YXdzOmttczp1cy13ZXN0LTI6OTAwNjQ5NDI3MTk2OmtleS9iYzAzMTYzMy0xYzJiLTRlMzEtYWM5ZC0yODQ2NDkwZjEyM2YAuAECAQB4GTrtGnufGqRpvDXN80qWQP5C5v67xRWfqbMppBQ52E8B6M6s2MDxLoxbzhjllQD7jgAAAH4wfAYJKoZIhvcNAQcGoG8wbQIBADBoBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDLFKMg1hYq8BuQ0PVQIBEIA7ocBnj0fcBM6h4jiuentYWNH9se_KneXN7Zg5vdXZDrTkYojiRW1zQlhr8_7zuhm5G8tkSixYxWha66oCAAAAAAwAABAAAAAAAAAAAAAAAAAAd0Xxm4xnhvyx7tb1DW6w6v____8AAAABAAAAAAAAAAAAAAABAAAAm9DgzqE32IlnFzdxXDm71xgjlBPi90O9zQ-5CX5lZBIImdtNIWERfIHbUzHvIEkF3zk_HyLbhwwQaGyhu1RqsCTmNRzLzjRTAEcu6PxEDoo3XObdJ58AH18YSX_klx6bHWr0z5oCCODfPcKz-gTr1WlFFa6OBlkj-hiKVTkC7SoOd4u7T12vxSjcyH5ZBowu742nJ4Bvg6il38dFNIzq3w6nm2m2ld-vUSI2Hw%3D%3D&identityprovider=quicksight&isauthcode=true", 
+                container: '#experience-container',
+                height: "700px",
+                width: "1000px",
+                onChange: (changeEvent, metadata) => {
+                    switch (changeEvent.eventName) {
+                        case 'FRAME_MOUNTED': {
+                            console.log("Do something when the experience frame is mounted.");
+                            break;
+                        }
+                        case 'FRAME_LOADED': {
+                            console.log("Do something when the experience frame is loaded.");
+                            break;
+                        }
+                    }
+                },
+            };
 
-    <body>
-	<center>
-	<iframe
-		width="960"
-		height="720"
-		src="https://us-west-2.quicksight.aws.amazon.com/sn/embed/share/accounts/681989517074/dashboards/gfg-Dashboard-Id-Presentacion-BAM-Workflow?directory_alias=cobis-poc-dev">
-	</iframe>
-	</center>
-    </body>
-
+            const contentOptions = {
+                panelOptions: {
+                    panelType: 'FULL',
+                    title: 'custom title', // Optional
+                    showQIcon: false, // Optional, Default: true
+                },
+                showTopicName: false, // Optional, Default: true
+                showPinboard: false, // Optional, Default: true
+                allowTopicSelection: false, // Optional, Default: true
+                allowFullscreen: false, // Optional, Default: true
+                searchPlaceholderText: "custom search placeholder", // Optional
+                themeOptions: { // Optional
+                    themeArn: 'arn:aws:quicksight:<Region>:<AWS-Account-ID>:theme/<Theme-ID>'
+                },
+                onMessage: async (messageEvent, experienceMetadata) => {
+                    switch (messageEvent.eventName) {
+                        case 'Q_SEARCH_OPENED': {
+                            console.log("Do something when SEARCH_BAR type panel is expanded");
+                            break;
+                        }
+                        case 'Q_SEARCH_FOCUSED': {
+                            console.log("Do something when SEARCH_BAR type panel is focused");
+                            break;
+                        }
+                        case 'Q_SEARCH_CLOSED': {
+                            console.log("Do something when SEARCH_BAR type panel is collapsed");
+                            break;
+                        }
+                        case 'Q_PANEL_ENTERED_FULLSCREEN': {
+                            console.log("Do something when panel enters full screen mode");
+                            break;
+                        }
+                        case 'Q_PANEL_EXITED_FULLSCREEN': {
+                            console.log("Do something when panel exits full screen mode");
+                            break;
+                        }
+                        case 'CONTENT_LOADED': {
+                            console.log("Do something after experience is loaded");
+                            break;
+                        }
+                        case 'ERROR_OCCURRED': {
+                            console.log("Do something when experience fails to load");
+                            break;
+                        }
+                    }
+                }
+            };
+            const embeddedGenerativeQnExperience = await embeddingContext.embedGenerativeQnA(frameOptions, contentOptions);
+        };
+    </script>
+</head>
+<body onload="embedGenerativeQnA()">
+    <header>
+        <img id="CobisTopazLogo" src="COBIS-TOPAZ.png" alt="Cobis Topaz" width="250">
+    </header>
+    <center>
+        <iframe
+            width="960"
+            height="720"
+            src="https://us-west-2.quicksight.aws.amazon.com/sn/embed/share/accounts/681989517074/dashboards/gfg-Dashboard-Id-Presentacion-BAM-Workflow?directory_alias=cobis-poc-dev">
+        </iframe>
+    </center>
+    <div id="experience-container"></div>
+</body>
 </html>
