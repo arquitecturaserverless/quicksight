@@ -42,10 +42,7 @@
                 showPinboard: false, // Optional, Default: true
                 allowTopicSelection: false, // Optional, Default: true
                 allowFullscreen: false, // Optional, Default: true
-                searchPlaceholderText: "custom search placeholder", // Optional
-                themeOptions: { // Optional
-                    themeArn: 'arn:aws:quicksight:<Region>:<AWS-Account-ID>:theme/<Theme-ID>'
-                },
+                searchPlaceholderText: "custom search placeholder",
                 onMessage: async (messageEvent, experienceMetadata) => {
                     switch (messageEvent.eventName) {
                         case 'Q_SEARCH_OPENED': {
@@ -101,18 +98,18 @@
         <img id="CobisTopazLogo" src="COBIS-TOPAZ.png" alt="Cobis Topaz" width="250">
     </header>
     <center>
-        <iframe
+        <!-- <iframe
             width="960"
             height="720"
             src="https://us-west-2.quicksight.aws.amazon.com/sn/embed/share/accounts/681989517074/dashboards/gfg-Dashboard-Id-Presentacion-BAM-Workflow?directory_alias=cobis-poc-dev",
             sandbox="allow-same-origin allow-scripts">
-        </iframe>
+        </iframe> -->
         <div id="experience-container">
-            <!-- <iframe
+            <iframe
                 width="960"
                 height="720"
                 src="https://us-west-2.quicksight.aws.amazon.com/embed/4c0a416e735249728774a50f80d10a3c/dashboards/gfg-Topic-Id-Indicadores-Acumulados-Flujos?code=AYABeIkrtmdi5SwRQpi163DMVJAAAAABAAdhd3Mta21zAEthcm46YXdzOmttczp1cy13ZXN0LTI6OTAwNjQ5NDI3MTk2OmtleS9iYzAzMTYzMy0xYzJiLTRlMzEtYWM5ZC0yODQ2NDkwZjEyM2YAuAECAQB4GTrtGnufGqRpvDXN80qWQP5C5v67xRWfqbMppBQ52E8BlRyPcNNTGRuvbY1N0yRvhQAAAH4wfAYJKoZIhvcNAQcGoG8wbQIBADBoBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDE34pvG8QM358x5CggIBEIA7yJ8BNgkxAeGPRruTpBySOj0gU7CTP_5S9VG7-r-CpCcgXvKbtYQF_FR4WabqxdY2fTCW3kL1qSiCaswCAAAAAAwAABAAAAAAAAAAAAAAAAAAMalcZ98Ss6PSsPrmDtf_ZP____8AAAABAAAAAAAAAAAAAAABAAAAm3aRIvoGlIbUMtE6NE0YBNpFEzRx7MypUOMOQ5Nm7YNqsg54_SRjF-qiNjngPYfzaZiKZOnG4e20MpdglngegkqK8T4tVDM1EzSIG9DboVm33-ZxRhvu4xWWZIYgf-1oUhUyNg1mN3JQhEE9ukxZNhEDxxnesXMKW7hGRosnBmmL43HpuINAa6vcUjj_f-ZLKDzSQIkBzrUOrRi32bAyIKJJNnVWfODGdV5_Hg%3D%3D&identityprovider=quicksight&isauthcode=true">
-            </iframe> -->
+            </iframe>
         </div>
     </center>
 </body>
