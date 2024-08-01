@@ -1,116 +1,126 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Integración de QuickSight</title>
-    <script src="https://unpkg.com/amazon-quicksight-embedding-sdk@2.7.0/dist/quicksight-embedding-js-sdk.min.js"></script>
-    <script type="text/javascript">
-        const embedGenerativeQnA = async () => {    
-            const { createEmbeddingContext } = QuickSightEmbedding;
 
-            const embeddingContext = await createEmbeddingContext({
-                onChange: (changeEvent, metadata) => {
-                    console.log('Context received a change', changeEvent, metadata);
-                },
-            });
+    <head>
+        <title>Dashboard Embedding Example</title>
+        <script src="https://unpkg.com/amazon-quicksight-embedding-sdk@2.0.0/dist/quicksight-embedding-js-sdk.min.js"></script>
+        <script type="text/javascript">
+            const embedDashboard = async() => {
+                const {
+                    createEmbeddingContext,
+                } = QuickSightEmbedding;
 
-            const frameOptions = {
-                url: "https://us-west-2.quicksight.aws.amazon.com/embed/4c0a416e735249728774a50f80d10a3c/dashboards/gfg-Topic-Id-Indicadores-Acumulados-Flujos?code=AYABeIkrtmdi5SwRQpi163DMVJAAAAABAAdhd3Mta21zAEthcm46YXdzOmttczp1cy13ZXN0LTI6OTAwNjQ5NDI3MTk2OmtleS9iYzAzMTYzMy0xYzJiLTRlMzEtYWM5ZC0yODQ2NDkwZjEyM2YAuAECAQB4GTrtGnufGqRpvDXN80qWQP5C5v67xRWfqbMppBQ52E8BlRyPcNNTGRuvbY1N0yRvhQAAAH4wfAYJKoZIhvcNAQcGoG8wbQIBADBoBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDE34pvG8QM358x5CggIBEIA7yJ8BNgkxAeGPRruTpBySOj0gU7CTP_5S9VG7-r-CpCcgXvKbtYQF_FR4WabqxdY2fTCW3kL1qSiCaswCAAAAAAwAABAAAAAAAAAAAAAAAAAAMalcZ98Ss6PSsPrmDtf_ZP____8AAAABAAAAAAAAAAAAAAABAAAAm3aRIvoGlIbUMtE6NE0YBNpFEzRx7MypUOMOQ5Nm7YNqsg54_SRjF-qiNjngPYfzaZiKZOnG4e20MpdglngegkqK8T4tVDM1EzSIG9DboVm33-ZxRhvu4xWWZIYgf-1oUhUyNg1mN3JQhEE9ukxZNhEDxxnesXMKW7hGRosnBmmL43HpuINAa6vcUjj_f-ZLKDzSQIkBzrUOrRi32bAyIKJJNnVWfODGdV5_Hg%3D%3D&identityprovider=quicksight&isauthcode=true",
-                container: '#experience-container',
-                height: "700px",
-                width: "1000px",
-                onChange: (changeEvent, metadata) => {
-                    switch (changeEvent.eventName) {
-                        case 'FRAME_MOUNTED': {
-                            console.log("Do something when the experience frame is mounted.");
-                            break;
+                const embeddingContext = await createEmbeddingContext({
+                    onChange: (changeEvent, metadata) => {
+                        console.log('Context received a change', changeEvent, metadata);
+                    },
+                });
+
+                const frameOptions = {
+                    url: 'https://us-west-2.quicksight.aws.amazon.com/embed/201af2d72c124c4b8495239f8afc62ec/dashboards/gfg-Topic-Id-Indicadores-Acumulados-Flujos?code=AYABeJkIy_VmD5ATvZOuCpN6yIQAAAABAAdhd3Mta21zAEthcm46YXdzOmttczp1cy13ZXN0LTI6OTAwNjQ5NDI3MTk2OmtleS9iYzAzMTYzMy0xYzJiLTRlMzEtYWM5ZC0yODQ2NDkwZjEyM2YAuAECAQB4GTrtGnufGqRpvDXN80qWQP5C5v67xRWfqbMppBQ52E8BX58XSXoOkwe99bqj_Enj0QAAAH4wfAYJKoZIhvcNAQcGoG8wbQIBADBoBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDIsWKEa3sblyechUmAIBEIA7kRkZkXQJ3Ze0YsQwsRQXQnQsr3M7QoBe8vCX5dNnDpcuVNzD_TMoiifQCdbS-MEKLechDQtZbgb_ym4CAAAAAAwAABAAAAAAAAAAAAAAAAAAEQJvI7pvtA847q56Ja6nxv____8AAAABAAAAAAAAAAAAAAABAAAAm8tpNmmWyR65HLqVNyGplgnFI05dj3q5O9Zg8jbFEdp_XL8R3oNGOt752Et3b2fO5mYyStnkwFF5mCchG4MHplTOsKqtfrFCHfST75QuaI-ugkZr7mL8h3Ujvhwmj384PMJCIvQiwHjfFQrk6XrDLh6Y3Gdl9Che92rdetu_IBuwPykKPO9B6kfHZnw5GKQZZR9EoJrlRU4NkhweASTGVfMsMKHihvMVjA-8hg%3D%3D&identityprovider=quicksight&isauthcode=true',
+                    container: '#experience-container',
+                    height: "700px",
+                    width: "1000px",
+                    onChange: (changeEvent, metadata) => {
+                        switch (changeEvent.eventName) {
+                            case 'FRAME_MOUNTED': {
+                                console.log("Do something when the experience frame is mounted.");
+                                break;
+                            }
+                            case 'FRAME_LOADED': {
+                                console.log("Do something when the experience frame is loaded.");
+                                break;
+                            }
                         }
-                        case 'FRAME_LOADED': {
-                            console.log("Do something when the experience frame is loaded.");
-                            break;
+                    },
+                };
+
+                const contentOptions = {
+                    parameters: [
+                        {
+                            Name: 'country',
+                            Values: [
+                                'United States'
+                            ],
+                        },
+                        {
+                            Name: 'states',
+                            Values: [
+                                'California',
+                                'Washington'
+                            ]
                         }
-                    }
-                },
+                    ],
+                    locale: "en-US",
+                    sheetOptions: {
+                        initialSheetId: 'gfg-Analisis-Id-Presentacion-BAM-Workflow',
+                        singleSheet: false,                        
+                        emitSizeChangedEventOnSheetChange: false,
+                    },
+                    toolbarOptions: {
+                        export: false,
+                        undoRedo: false,
+                        reset: false
+                    },
+                    attributionOptions: {
+                        overlayContent: false,
+                    },
+                    onMessage: async (messageEvent, experienceMetadata) => {
+                        switch (messageEvent.eventName) {
+                            case 'CONTENT_LOADED': {
+                                console.log("All visuals are loaded. The title of the document:", messageEvent.message.title);
+                                break;
+                            }
+                            case 'ERROR_OCCURRED': {
+                                console.log("Error occurred while rendering the experience. Error code:", messageEvent.message.errorCode);
+                                break;
+                            }
+                            case 'PARAMETERS_CHANGED': {
+                                console.log("Parameters changed. Changed parameters:", messageEvent.message.changedParameters);
+                                break;
+                            }
+                            case 'SELECTED_SHEET_CHANGED': {
+                                console.log("Selected sheet changed. Selected sheet:", messageEvent.message.selectedSheet);
+                                break;
+                            }
+                            case 'SIZE_CHANGED': {
+                                console.log("Size changed. New dimensions:", messageEvent.message);
+                                break;
+                            }
+                            case 'MODAL_OPENED': {
+                                window.scrollTo({
+                                    top: 0 // iframe top position
+                                });
+                                break;
+                            }
+                        }
+                    },
+                };
+                const embeddedDashboardExperience = await embeddingContext.embedDashboard(frameOptions, contentOptions);
+
+                const selectCountryElement = document.getElementById('country');
+                selectCountryElement.addEventListener('change', (event) => {
+                    embeddedDashboardExperience.setParameters([
+                        {
+                            Name: 'country',
+                            Values: event.target.value
+                        }
+                    ]);
+                });
             };
+        </script>
+    </head>
 
-            const contentOptions = {
-                panelOptions: {
-                    panelType: 'FULL',
-                    title: 'custom title', // Optional
-                    showQIcon: false, // Optional, Default: true
-                },
-                showTopicName: false, // Optional, Default: true
-                showPinboard: false, // Optional, Default: true
-                allowTopicSelection: false, // Optional, Default: true
-                allowFullscreen: false, // Optional, Default: true
-                searchPlaceholderText: "custom search placeholder",
-                onMessage: async (messageEvent, experienceMetadata) => {
-                    switch (messageEvent.eventName) {
-                        case 'Q_SEARCH_OPENED': {
-                            console.log("Do something when SEARCH_BAR type panel is expanded");
-                            break;
-                        }
-                        case 'Q_SEARCH_FOCUSED': {
-                            console.log("Do something when SEARCH_BAR type panel is focused");
-                            break;
-                        }
-                        case 'Q_SEARCH_CLOSED': {
-                            console.log("Do something when SEARCH_BAR type panel is collapsed");
-                            break;
-                        }
-                        case 'Q_PANEL_ENTERED_FULLSCREEN': {
-                            console.log("Do something when panel enters full screen mode");
-                            break;
-                        }
-                        case 'Q_PANEL_EXITED_FULLSCREEN': {
-                            console.log("Do something when panel exits full screen mode");
-                            break;
-                        }
-                        case 'CONTENT_LOADED': {
-                            console.log("Do something after experience is loaded");
-                            break;
-                        }
-                        case 'ERROR_OCCURRED': {
-                            console.log("Do something when experience fails to load");
-                            break;
-                        }
-                    }
-                }
-            };
+    <body onload="embedDashboard()">
+        <span>
+            <label for="country">Country</label>
+            <select id="country" name="country">
+                <option value="United States">United States</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Canada">Canada</option>
+            </select>
+        </span>
+        <div id="experience-container"></div>
+    </body>
 
-            try {
-                const embeddedGenerativeQnExperience = await embeddingContext.embedGenerativeQnA(frameOptions, contentOptions);
-            } catch (error) {
-                console.error('Error al incrustar la experiencia Generative QnA:', error);
-            }
-        };
-
-        window.onload = () => {
-            if (typeof(Storage) !== "undefined") {
-                embedGenerativeQnA();
-            } else {
-                console.error("localStorage no está disponible.");
-            }
-        };
-    </script>
-</head>
-<body>
-    <header>
-        <img id="CobisTopazLogo" src="COBIS-TOPAZ.png" alt="Cobis Topaz" width="250">
-    </header>
-    <center>
-        <!-- <iframe
-            width="960"
-            height="720"
-            src="https://us-west-2.quicksight.aws.amazon.com/sn/embed/share/accounts/681989517074/dashboards/gfg-Dashboard-Id-Presentacion-BAM-Workflow?directory_alias=cobis-poc-dev",
-            sandbox="allow-same-origin allow-scripts">
-        </iframe> -->
-        <div id="experience-container">
-            <iframe
-                width="960"
-                height="720"
-                src="https://us-west-2.quicksight.aws.amazon.com/embed/4c0a416e735249728774a50f80d10a3c/dashboards/gfg-Topic-Id-Indicadores-Acumulados-Flujos?code=AYABeIkrtmdi5SwRQpi163DMVJAAAAABAAdhd3Mta21zAEthcm46YXdzOmttczp1cy13ZXN0LTI6OTAwNjQ5NDI3MTk2OmtleS9iYzAzMTYzMy0xYzJiLTRlMzEtYWM5ZC0yODQ2NDkwZjEyM2YAuAECAQB4GTrtGnufGqRpvDXN80qWQP5C5v67xRWfqbMppBQ52E8BlRyPcNNTGRuvbY1N0yRvhQAAAH4wfAYJKoZIhvcNAQcGoG8wbQIBADBoBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDE34pvG8QM358x5CggIBEIA7yJ8BNgkxAeGPRruTpBySOj0gU7CTP_5S9VG7-r-CpCcgXvKbtYQF_FR4WabqxdY2fTCW3kL1qSiCaswCAAAAAAwAABAAAAAAAAAAAAAAAAAAMalcZ98Ss6PSsPrmDtf_ZP____8AAAABAAAAAAAAAAAAAAABAAAAm3aRIvoGlIbUMtE6NE0YBNpFEzRx7MypUOMOQ5Nm7YNqsg54_SRjF-qiNjngPYfzaZiKZOnG4e20MpdglngegkqK8T4tVDM1EzSIG9DboVm33-ZxRhvu4xWWZIYgf-1oUhUyNg1mN3JQhEE9ukxZNhEDxxnesXMKW7hGRosnBmmL43HpuINAa6vcUjj_f-ZLKDzSQIkBzrUOrRi32bAyIKJJNnVWfODGdV5_Hg%3D%3D&identityprovider=quicksight&isauthcode=true">
-            </iframe>
-        </div>
-    </center>
-</body>
 </html>
