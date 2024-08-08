@@ -112,15 +112,16 @@
     </head>
 
     <body onload="embedDashboard()">
-        <span>
-            <label for="country">Country</label>
-            <select id="country" name="country">
-                <option value="Colombia">Colombia</option>
-                <option value="Mexico">Mexico</option>
-                <option value="Canada">Canada</option>
-            </select>
-        </span>
+        <h1>Dashboard generado por URL embedida</h1>
         <div id="experience-container"></div>
+        <div> 
+            <h1> Dashboard desde Iframe</h1>          
+            <iframe
+                width="960"
+                height="720"
+                src="https://us-west-2.quicksight.aws.amazon.com/sn/embed/share/accounts/681989517074/dashboards/gfg-Dashboard-Id-Presentacion-BAM-Workflow?directory_alias=cobis-poc-dev">
+            </iframe>
+        </div>
     </body>
 
 </html>
