@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Generative Q&A Embedding Example</title>
-        <script src="https://unpkg.com/amazon-quicksight-embedding-sdk@2.7.0/dist/quicksight-embedding-js-sdk.min.js"></script>
+        <!-- <script src="https://unpkg.com/amazon-quicksight-embedding-sdk@2.7.0/dist/quicksight-embedding-js-sdk.min.js"></script>
         <script type="text/javascript">
             const embedGenerativeQnA = async() => {    
                 const {createEmbeddingContext} = QuickSightEmbedding;
@@ -42,11 +42,11 @@
                     // Use SEARCH_BAR panel type for the landing state to be similar to embedQSearchBar
                     // with generative capability enabled topics
                     
-                    panelOptions: {
-                        panelType: 'SEARCH_BAR',
-                        focusedHeight: '250px',
-                        expandedHeight: '500px',
-                    },
+                    // panelOptions: {
+                    //     panelType: 'SEARCH_BAR',
+                    //     focusedHeight: '250px',
+                    //     expandedHeight: '500px',
+                    // },
                     
                     showTopicName: false, // Optional, Default: true
                     showPinboard: false, // Optional, Default: true
@@ -55,7 +55,7 @@
                     searchPlaceholderText: "custom search placeholder", // Optional
                     themeOptions: { // Optional
                         themeArn: 'arn:aws:quicksight:us-west-2:681989517074:topic/gfg-Topic-Id-Indicadores-Acumulados-Flujos'
-                    },
+                    }
                     onMessage: async (messageEvent, experienceMetadata) => {
                         switch (messageEvent.eventName) {
                             case 'Q_SEARCH_OPENED': {
@@ -94,12 +94,16 @@
                 };
                 const embeddedGenerativeQnExperience = await embeddingContext.embedGenerativeQnA(frameOptions, contentOptions);
             };
-        </script>
+        </script> -->
     </head>
 
-    <body onload="embedGenerativeQnA()">
+    <body>
         <h1>Amazon Q generado por URL embedida incrustada usando SDK</h1>
-        <div id="experience-container"></div>
+        <iframe
+        width="960"
+        height="720"
+        src="https://us-west-2.quicksight.aws.amazon.com/embed/813655a1f9764616a08466fe69a60081/dashboards/gfg-Topic-Id-Indicadores-Acumulados-Flujos?code=AYABeFC5f_ATqJm_V_GAZWYBU_4AAAABAAdhd3Mta21zAEthcm46YXdzOmttczp1cy13ZXN0LTI6OTAwNjQ5NDI3MTk2OmtleS9iYzAzMTYzMy0xYzJiLTRlMzEtYWM5ZC0yODQ2NDkwZjEyM2YAuAECAQB4GTrtGnufGqRpvDXN80qWQP5C5v67xRWfqbMppBQ52E8Ba8c7MC7Lo9PgnMS1bCGPbQAAAH4wfAYJKoZIhvcNAQcGoG8wbQIBADBoBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDDxNf9wyiH8uQiwCogIBEIA7qhYVRzkqO9Rg6KKKoy5n8GMpY64D3nkF80lL44CAxMivUZtM8_OLWpNAl_SNgPW0TTSAY-G7kgsXttwCAAAAAAwAABAAAAAAAAAAAAAAAAAAWJCxgebPTp2STS7gLlC_g_____8AAAABAAAAAAAAAAAAAAABAAAAmzMJMGHPJT1bVqH53yU0Td3jG0UUyIolRzzoIKk7aJBlQ4odeSMhL4fdSDIceeGvGv9iMSZQqEhvvqcW93xAr5cjTsQ8zVDVEyvRxn8oUPVrGMvK41W7CdW9EsYuarTXrAaMGpF6NVj5EAaNyec1TKWgHdtqNWwWPhBJLd-xf878yVKpNXafKnIalbZJ8jpctAaTeNqPNt-gNLTum9cHmZ8xetkAEJU-YH_fzQ%3D%3D&identityprovider=quicksight&isauthcode=true">
+        </iframe>
     </body>
 
 </html>
