@@ -2,125 +2,16 @@
 <html>
 
     <head>
-        <title>Dashboard Embedding Example</title>
-        <script src="https://unpkg.com/amazon-quicksight-embedding-sdk@2.0.0/dist/quicksight-embedding-js-sdk.min.js"></script>
-        <script type="text/javascript">
-            const embedDashboard = async() => {
-                const {
-                    createEmbeddingContext,
-                } = QuickSightEmbedding;
-
-                const embeddingContext = await createEmbeddingContext({
-                    onChange: (changeEvent, metadata) => {
-                        console.log('Context received a change', changeEvent, metadata);
-                    },
-                });
-
-                const frameOptions = {
-                    url: "https://us-west-2.quicksight.aws.amazon.com/embed/ceaa5f5a7699490bb68d8145dc56a9e0/dashboards/gfg-Dashboard-Id-Presentacion-BAM-Workflow?code=AYABeG2wpTVygU3vj8aurECPKqgAAAABAAdhd3Mta21zAEthcm46YXdzOmttczp1cy13ZXN0LTI6OTAwNjQ5NDI3MTk2OmtleS9iYzAzMTYzMy0xYzJiLTRlMzEtYWM5ZC0yODQ2NDkwZjEyM2YAuAECAQB4GTrtGnufGqRpvDXN80qWQP5C5v67xRWfqbMppBQ52E8B-8ka4kF7mmnsRIggYl_fBAAAAH4wfAYJKoZIhvcNAQcGoG8wbQIBADBoBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDI9MX6SZcOCsJzw_KwIBEIA7IKj2NQcBEnCMJqq3cYlFxPE15vWZGJALxrLBLFFw3Mh-IPta9k1uQvQgQNy795wbLQ6cdZwMrdQRYCMCAAAAAAwAABAAAAAAAAAAAAAAAAAAJo23praI0KuxZ7fqq-Ju4_____8AAAABAAAAAAAAAAAAAAABAAAAmx0QWZu2Ow0fRGGfxs02V3GCjmozASbvXB7OhsYK1S-qsArMQJcYeHZ5MjYe53q4fVRrALSzFm43H-KBXxOtQqrVqEfHg-PxGLloDWB_Ns3SRpvZ7exHDiYmrBB1aTMUoDI9xcICLlOon_jA3tR7nKXuNQu3yL8kyNlEabvMPkVxbYmXw4O-5qu7nqwSJF5QPnWK8umTtpFEGUeIAC39KX6uJu9nISeqTXKhFA%3D%3D&identityprovider=quicksight&isauthcode=true",
-                    container: '#experience-container',
-                    height: "700px",
-                    width: "1000px",
-                    onChange: (changeEvent, metadata) => {
-                        switch (changeEvent.eventName) {
-                            case 'FRAME_MOUNTED': {
-                                console.log("Do something when the experience frame is mounted.");
-                                break;
-                            }
-                            case 'FRAME_LOADED': {
-                                console.log("Do something when the experience frame is loaded.");
-                                break;
-                            }
-                        }
-                    },
-                };
-
-                const contentOptions = {
-                    parameters: [
-                        {
-                            Name: 'country',
-                            Values: [
-                                'Colombia'
-                            ],
-                        },
-                        {
-                            Name: 'states',
-                            Values: [
-                                'California',
-                                'Washington'
-                            ]
-                        }
-                    ],
-                    locale: "en-US",
-                    sheetOptions: {
-                        initialSheetId: 'gfg-Analisis-Id-Presentacion-BAM-Workflow',
-                        singleSheet: false,                        
-                        emitSizeChangedEventOnSheetChange: false,
-                    },
-                    toolbarOptions: {
-                        export: false,
-                        undoRedo: false,
-                        reset: false
-                    },
-                    attributionOptions: {
-                        overlayContent: false,
-                    },
-                    onMessage: async (messageEvent, experienceMetadata) => {
-                        switch (messageEvent.eventName) {
-                            case 'CONTENT_LOADED': {
-                                console.log("All visuals are loaded. The title of the document:", messageEvent.message.title);
-                                break;
-                            }
-                            case 'ERROR_OCCURRED': {
-                                console.log("Error occurred while rendering the experience. Error code:", messageEvent.message.errorCode);
-                                break;
-                            }
-                            case 'PARAMETERS_CHANGED': {
-                                console.log("Parameters changed. Changed parameters:", messageEvent.message.changedParameters);
-                                break;
-                            }
-                            case 'SELECTED_SHEET_CHANGED': {
-                                console.log("Selected sheet changed. Selected sheet:", messageEvent.message.selectedSheet);
-                                break;
-                            }
-                            case 'SIZE_CHANGED': {
-                                console.log("Size changed. New dimensions:", messageEvent.message);
-                                break;
-                            }
-                            case 'MODAL_OPENED': {
-                                window.scrollTo({
-                                    top: 0 // iframe top position
-                                });
-                                break;
-                            }
-                        }
-                    },
-                };
-                const embeddedDashboardExperience = await embeddingContext.embedDashboard(frameOptions, contentOptions);
-
-                const selectCountryElement = document.getElementById('country');
-                selectCountryElement.addEventListener('change', (event) => {
-                    embeddedDashboardExperience.setParameters([
-                        {
-                            Name: 'country',
-                            Values: event.target.value
-                        }
-                    ]);
-                });
-            };
-        </script>
+        <title>Dashboard Embebido</title>
     </head>
 
-    <body onload="embedDashboard()">
-        <h1>Dashboard generado por URL embedida incrustada usando SDK 05 septiembre - 11:07am</h1>
-        <div id="experience-container"></div>
-
-        <!-- <h1>Dashboard generado por URL embedida incrustada mediante Iframe</h1>
+    <body>
+        <h1>Dashboard BAM Workflow</h1>
         <iframe
             width="960"
             height="720"
-            src="https://us-west-2.quicksight.aws.amazon.com/embed/7c755e6df6a042f79952fa70c9b9c614/dashboards/gfg-Dashboard-Id-Presentacion-BAM-Workflow?code=AYABeFwBdWZXZ8iuj_wvD5YperAAAAABAAdhd3Mta21zAEthcm46YXdzOmttczp1cy13ZXN0LTI6OTAwNjQ5NDI3MTk2OmtleS9iYzAzMTYzMy0xYzJiLTRlMzEtYWM5ZC0yODQ2NDkwZjEyM2YAuAECAQB4GTrtGnufGqRpvDXN80qWQP5C5v67xRWfqbMppBQ52E8BbrMdf99bplWp6UXyYyZ6oAAAAH4wfAYJKoZIhvcNAQcGoG8wbQIBADBoBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDH1noP8JJSeLrCVpGgIBEIA7itAJyp18l7E-WO22e7puc_IHXSGbFBHu-wJD0eEPpAEEtBJTgOp5_cC_irD3dUPC4G9BdA1HsoskrdwCAAAAAAwAABAAAAAAAAAAAAAAAAAAuNB5alHwp6MbwFNgcwq01v____8AAAABAAAAAAAAAAAAAAABAAAAm_FG_QDV46r1bCHZFOUhnZ_teAE8tGifrj-UPZtLmfnF1-l_pGbxh0jmfuAgTeLCT2_wuzzOHstLKS759ZC-vD58b8-FcVgSUrYQsCCIySThvJUD_VGCydnWItzmqOYnufztuxymrnTgTwfh2UkOsN2MjcUxpg3to_T7OympclITKQYE8IEQj4itxp14t3L_DgveRdmLzmzVX7LcF0XyYdC5s7KgDwJIUnTncA%3D%3D&identityprovider=quicksight&isauthcode=true">
-        </iframe> -->
+            src="https://us-west-2.quicksight.aws.amazon.com/embed/b5d2f3534e3745f29070b179aefebee6/dashboards/gfg-Dashboard-Id-Presentacion-BAM-Workflow?code=AYABeEeirCtChkq2wtzLgMVzmy8AAAABAAdhd3Mta21zAEthcm46YXdzOmttczp1cy13ZXN0LTI6OTAwNjQ5NDI3MTk2OmtleS9iYzAzMTYzMy0xYzJiLTRlMzEtYWM5ZC0yODQ2NDkwZjEyM2YAuAECAQB4GTrtGnufGqRpvDXN80qWQP5C5v67xRWfqbMppBQ52E8BabmSe0wBhFG9e6xsEuCG4gAAAH4wfAYJKoZIhvcNAQcGoG8wbQIBADBoBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDNPKyWjDI-ykEPBw3AIBEIA7UuFwwl0g4_1DX3pgPoJ8mnC1FE5Q9sdm5DJNr_paK6itEVADUg5eVI494uIETyNMfmmzScgSTwLRzEkCAAAAAAwAABAAAAAAAAAAAAAAAAAALyA2_8IZ236iL12dp37DDf____8AAAABAAAAAAAAAAAAAAABAAAAm_XBYGFJMpVWvM1gknafLyxINSDzysuCMy9W6oEnawGz6dO_0RuQtO9_z9R4lkznr87_TPCS7JmXqx9JjsAOX7pou0GwBWvQL6bHxAGu1A08UgEQVBKCAFr7s2WBuHiExWvJMeluH_r1AWxm91_x7wHcGpeZopDhI-iIMxKW9ad_mwyme4jg_sSJnhWmwefyTsLOLFA3-VYX9H2E-6VzyX9pLRG4LHV30Nkxdg%3D%3D&identityprovider=quicksight&isauthcode=true">
+        </iframe>
     </body>
 
 </html>
