@@ -1,109 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Generative Q&A Embedding Example</title>
-        <!-- <script src="https://unpkg.com/amazon-quicksight-embedding-sdk@2.7.0/dist/quicksight-embedding-js-sdk.min.js"></script>
-        <script type="text/javascript">
-            const embedGenerativeQnA = async() => {    
-                const {createEmbeddingContext} = QuickSightEmbedding;
-
-                const embeddingContext = await createEmbeddingContext({
-                    onChange: (changeEvent, metadata) => {
-                        console.log('Context received a change', changeEvent, metadata);
-                    },
-                });
-
-                const frameOptions = {
-                    url: "https://us-west-2.quicksight.aws.amazon.com/embed/01895136093f4af590f693b7e1aec9aa/dashboards/gfg-Topic-Id-Indicadores-Acumulados-Flujos?code=AYABeC0HsnrvPdvAkZS-auPTWf4AAAABAAdhd3Mta21zAEthcm46YXdzOmttczp1cy13ZXN0LTI6OTAwNjQ5NDI3MTk2OmtleS9iYzAzMTYzMy0xYzJiLTRlMzEtYWM5ZC0yODQ2NDkwZjEyM2YAuAECAQB4GTrtGnufGqRpvDXN80qWQP5C5v67xRWfqbMppBQ52E8BE4uMn95KUGm71bfPdhNI0AAAAH4wfAYJKoZIhvcNAQcGoG8wbQIBADBoBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDNGaAyBzcvyPOkmOrwIBEIA7T3ZJ4CaJH6aDiZezg4rfUBxCod8I1QiBC7KTYhAul2Ft9GSfgF8KiGDAbxv7DyPF4tVoJ_LT0xJhbNsCAAAAAAwAABAAAAAAAAAAAAAAAAAAJiXKMAQZxnAiZp51asuOJP____8AAAABAAAAAAAAAAAAAAABAAAAm2mzKNLCRzlnz6O8tyG4_wlZqGeOjz8wMQ4IKhir6LeQuSV5jYWhg4I58a0knC2d7cJVhnUdFgFpDPwBXgny78Eht3CZk8QiTf2avIPbrnF_KgHDhVjCAbsb20hEfXlYVctjucS76U28YwUNdWbdvtSZFGq8uNNWxgdg1tU4nvWGM2h74C3t-Sbj7KK4YfClsGYPNlZoO5q5DdRoBB-DQTWAGj4oxJZn7z12rw%3D%3D&identityprovider=quicksight&isauthcode=true",
-                    container: '#experience-container',
-                    height: "700px",
-                    width: "1000px",
-                    onChange: (changeEvent, metadata) => {
-                        switch (changeEvent.eventName) {
-                            case 'FRAME_MOUNTED': {
-                                console.log("Do something when the experience frame is mounted.");
-                                break;
-                            }
-                            case 'FRAME_LOADED': {
-                                console.log("Do something when the experience frame is loaded.");
-                                break;
-                            }
-                        }
-                    },
-                };
-
-                const contentOptions = {
-                    // Optional panel settings. Default behavior is equivalent to {panelType: 'FULL'}
-                    panelOptions: {
-                        panelType: 'FULL',
-                        title: 'custom title', // Optional
-                        showQIcon: true, // Optional, Default: true
-                    },
-                    // Use SEARCH_BAR panel type for the landing state to be similar to embedQSearchBar
-                    // with generative capability enabled topics
-                    
-                    // panelOptions: {
-                    //     panelType: 'SEARCH_BAR',
-                    //     focusedHeight: '250px',
-                    //     expandedHeight: '500px',
-                    // },
-                    
-                    showTopicName: false, // Optional, Default: true
-                    showPinboard: false, // Optional, Default: true
-                    allowTopicSelection: false, // Optional, Default: true
-                    allowFullscreen: false, // Optional, Default: true
-                    searchPlaceholderText: "custom search placeholder", // Optional
-                    themeOptions: { // Optional
-                        themeArn: 'arn:aws:quicksight:us-west-2:681989517074:topic/gfg-Topic-Id-Indicadores-Acumulados-Flujos'
-                    }
-                    onMessage: async (messageEvent, experienceMetadata) => {
-                        switch (messageEvent.eventName) {
-                            case 'Q_SEARCH_OPENED': {
-                                // called when pinboard is shown / visuals are rendered
-                                console.log("Do something when SEARCH_BAR type panel is expanded");
-                                break;
-                            }
-                            case 'Q_SEARCH_FOCUSED': {
-                                // called when question suggestions or topic selection dropdown are shown
-                                console.log("Do something when SEARCH_BAR type panel is focused");
-                                break;
-                            }
-                            case 'Q_SEARCH_CLOSED': {
-                                // called when shrinked to initial bar height
-                                console.log("Do something when SEARCH_BAR type panel is collapsed");
-                                break;
-                            }
-                            case 'Q_PANEL_ENTERED_FULLSCREEN': {
-                                console.log("Do something when panel enters full screen mode");
-                                break;
-                            }
-                            case 'Q_PANEL_EXITED_FULLSCREEN': {
-                                console.log("Do something when panel exits full screen mode");
-                                break;
-                            }
-                            case 'CONTENT_LOADED': {
-                                console.log("Do something after experience is loaded");
-                                break;
-                            }
-                            case 'ERROR_OCCURRED': {
-                                console.log("Do something when experience fails to load");
-                                break;
-                            }
-                        }
-                    }
-                };
-                const embeddedGenerativeQnExperience = await embeddingContext.embedGenerativeQnA(frameOptions, contentOptions);
-            };
-        </script> -->
+        <title>Dashboard y Amazazon Q</title>
     </head>
 
     <body>
-        <h1>Amazon Q generado por URL embedida incrustada usando SDK</h1>
+        <h1>Dashboard Q generado por URL embebida incrustada usando Iframe</h1>
         <iframe
-        width="960"
-        height="720"
-        src="https://us-west-2.quicksight.aws.amazon.com/embed/813655a1f9764616a08466fe69a60081/dashboards/gfg-Topic-Id-Indicadores-Acumulados-Flujos?code=AYABeFC5f_ATqJm_V_GAZWYBU_4AAAABAAdhd3Mta21zAEthcm46YXdzOmttczp1cy13ZXN0LTI6OTAwNjQ5NDI3MTk2OmtleS9iYzAzMTYzMy0xYzJiLTRlMzEtYWM5ZC0yODQ2NDkwZjEyM2YAuAECAQB4GTrtGnufGqRpvDXN80qWQP5C5v67xRWfqbMppBQ52E8Ba8c7MC7Lo9PgnMS1bCGPbQAAAH4wfAYJKoZIhvcNAQcGoG8wbQIBADBoBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDDxNf9wyiH8uQiwCogIBEIA7qhYVRzkqO9Rg6KKKoy5n8GMpY64D3nkF80lL44CAxMivUZtM8_OLWpNAl_SNgPW0TTSAY-G7kgsXttwCAAAAAAwAABAAAAAAAAAAAAAAAAAAWJCxgebPTp2STS7gLlC_g_____8AAAABAAAAAAAAAAAAAAABAAAAmzMJMGHPJT1bVqH53yU0Td3jG0UUyIolRzzoIKk7aJBlQ4odeSMhL4fdSDIceeGvGv9iMSZQqEhvvqcW93xAr5cjTsQ8zVDVEyvRxn8oUPVrGMvK41W7CdW9EsYuarTXrAaMGpF6NVj5EAaNyec1TKWgHdtqNWwWPhBJLd-xf878yVKpNXafKnIalbZJ8jpctAaTeNqPNt-gNLTum9cHmZ8xetkAEJU-YH_fzQ%3D%3D&identityprovider=quicksight&isauthcode=true">
+            width="960"
+            height="720"
+            src="https://us-west-2.quicksight.aws.amazon.com/embed/0f8071dc7ce745d4bba028ef7687ab51/dashboards/gfg-Dashboard-Id-Presentacion-BAM-Workflow?code=AYABeChKMFTyic-B5lRGRd3eEY4AAAABAAdhd3Mta21zAEthcm46YXdzOmttczp1cy13ZXN0LTI6OTAwNjQ5NDI3MTk2OmtleS9iYzAzMTYzMy0xYzJiLTRlMzEtYWM5ZC0yODQ2NDkwZjEyM2YAuAECAQB4GTrtGnufGqRpvDXN80qWQP5C5v67xRWfqbMppBQ52E8BHt8ARXgEzAholNTKRmUyFgAAAH4wfAYJKoZIhvcNAQcGoG8wbQIBADBoBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDHzB2dj4visrNnSs8gIBEIA7nee4XsZHe5rS2CJG6CKc7Wz3FFRb92Cdxn1lEbutTKHOdTfGEWg1qVViAJToutXbNNPevT__tFkScfQCAAAAAAwAABAAAAAAAAAAAAAAAAAAGv6XIpX5MZSE2Bor0P5kKv____8AAAABAAAAAAAAAAAAAAABAAAAm8xVoCmCFphB69z9m0k_pS36xa2DTo5TjYUZkaMWQ1Xsqz5pWTwYfAkJdeI1hwDfXux6q8NOZIgX-o5hwGJyTW3LEEAUHIJ-bmTZZKKiHWdWn1AE0kDHyH1M9HbjEvCnwsxlJ6wonVyOwOxtoVA5ILm81ybR8GAAbYHwyDZiBbjzig-Mi0Tp7fjdHgjAylzQzsS1z6j7muGedmTGXiHMePbg4hFthTk8OumDPg%3D%3D&identityprovider=quicksight&isauthcode=true">
         </iframe>
+
+
+        <h1>Amazon Q generado por URL embebida incrustada usando Iframe</h1>
+        <iframe
+            width="960"
+            height="720"
+            src="https://us-west-2.quicksight.aws.amazon.com/embedding/23a7f1e59fcd4f00a27752a4947366a4/q/search/nre/gfg-Topic-Id-Indicadores-Acumulados-Flujos?code=AYABeLuDFkG_4Y_SrLpSAQ80HPwAAAABAAdhd3Mta21zAEthcm46YXdzOmttczp1cy13ZXN0LTI6OTAwNjQ5NDI3MTk2OmtleS9iYzAzMTYzMy0xYzJiLTRlMzEtYWM5ZC0yODQ2NDkwZjEyM2YAuAECAQB4GTrtGnufGqRpvDXN80qWQP5C5v67xRWfqbMppBQ52E8BzuoYh4c-IGL15jz9zj9juwAAAH4wfAYJKoZIhvcNAQcGoG8wbQIBADBoBgkqhkiG9w0BBwEwHgYJYIZIAWUDBAEuMBEEDI6A4Q910mq-R4AJlgIBEIA7p6G_4OQ5yxEpWqSPAOhY_ao54Dsu9y_OJhHp3EZ8HupHnnrDWq7HZ7kgAncp_vr9IKXN19laqqcPUPACAAAAAAwAABAAAAAAAAAAAAAAAAAA8eW6eGqxVajr170ffSnGU_____8AAAABAAAAAAAAAAAAAAABAAAAm9LyG0flRa9jNjLEjAlMN7tRCF12d-icXXoa8lVzo3C89aNNyjWdInl_cFFvMwV6EOeakPLg4Lewm-VMTmS7XWMNWH4YWRZ_zfd0tyRHFt-A3p6wuizzsrzGPnSKTu9i2p5fYSxtrtn9wmz8OYW2S7OgbxJ9fLLNFSo9oq77oHWFv9D9igYwBlhiQN8fNUuz-Fvyu8txC-OdlniXDAB4qxcaeTl7_MGiS2_BVQ%3D%3D&identityprovider=quicksight&isauthcode=true">
+        </iframe>
+
     </body>
 
 </html>
